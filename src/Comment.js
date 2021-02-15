@@ -1,13 +1,12 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
 
-function Comment({text, id}) {
+function Comment({text}) {
 	return (
 		<div>
-			<Card style={{ width: '18rem' }}>
+			<Card>
 				<Card.Body>
 					<Card.Text>
-						<span style={{fontWeight: 'bold'}}>{id + ' ) '}</span>
 						{text}
 					</Card.Text>
 				</Card.Body>
