@@ -6,7 +6,7 @@ function CommentList({comment}) {
 
 	return (
 		<div style={{backgroundColor: 'lightblue', height: '100vh'}}>
-			<h1>This is list of comment</h1>
+			<h1>List of {comment.length > 1 ? 'Comments' : 'Comment' }</h1>
 			<CardColumns>
 				{
 					comment.map( comment => 
