@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CommentForm from './CommentForm';
 import CommentList from './CommentList';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-
-const initialComment = []
+import axios from 'axios'
 
 function App() {
-  const [comment, setComment] = useState(initialComment);
+  const [comment, setComment] = useState(() => []);
+
+  useEffect(() => {
+		axios.get('http://localhost:3001/comments')
+		.then(function (response) {
+			setComment(response.data)
+		})
+	}, [])
 
   return (
     <div className="App" style={{backgroundColor: 'lightblue'}}>
