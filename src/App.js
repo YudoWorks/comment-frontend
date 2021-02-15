@@ -11,14 +11,14 @@ function App() {
   const [comment, setComment] = useState(initialComment);
 
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor: 'lightblue'}}>
       <Container fluid>
         <Row>
-          <Col xs={3}>
+          <Col xs={3} style={{padding: "0"}}>
             <CommentForm comment={comment} handleComment={setComment}/>
           </Col>
           <Col>
-            <CommentList comment={comment}/>
+            <CommentList comment={comment} style={{padding: "0"}}/>
           </Col>
         </Row>
       </Container>

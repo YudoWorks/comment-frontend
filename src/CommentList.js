@@ -5,7 +5,7 @@ import CardColumns from 'react-bootstrap/CardColumns'
 function CommentList({comment}) {
 
 	return (
-		<div style={{backgroundColor: 'lightblue', height: '100vh'}}>
+		<div style={{padding:"1rem"}}>
 			<h1>List of {comment.length > 1 ? 'Comments' : 'Comment' }</h1>
 			<CardColumns>
 				{

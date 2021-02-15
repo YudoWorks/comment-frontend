@@ -19,7 +19,7 @@ export default function CommentForm({comment, handleComment}) {
 		handleComment([newComment, ...comment]);
 	}
 	return (
-		<div className='CommentForm' style={{backgroundColor: 'whitesmoke', height: '100vh'}}>
+		<div className='CommentForm' style={{backgroundColor: 'whitesmoke', height: '100vh', padding:"1rem"}}>
 			<h1>Create Comment</h1>
 			<Form onSubmit={handleSubmit}>
 				<Form.Group controlId="comment">
