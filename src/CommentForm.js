@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios'
 
-export default function CommentForm({comment, handleComment}) {
+function CommentForm({comments, setRefetched}) {
 	const [text, setText] = useState('');
 
 	function handleSubmit(e) {
@@ -11,13 +12,20 @@ export default function CommentForm({comment, handleComment}) {
 
 		const newComment = {
 			text,
-			id: comment.length + 1
+			id: comments.length + 1
 		}
 
 		setText('');
 
-		handleComment([newComment, ...comment]);
+		axios.post('http://localhost:3001/comments', newComment)
+		.then(function (response) {
+			setRefetched(true);
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
 	}
+
 	return (
 		<div className='CommentForm' style={{backgroundColor: 'whitesmoke', height: '100vh', padding:"1rem"}}>
 			<h1>Create Comment</h1>
@@ -33,3 +41,5 @@ export default function CommentForm({comment, handleComment}) {
 		</div>
 	)
 }
+
+export default CommentForm;

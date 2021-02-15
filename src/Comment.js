@@ -1,8 +1,14 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Trash } from 'react-bootstrap-icons';
+import Button from 'react-bootstrap/Button'
 
-function Comment({text}) {
+function Comment({id, text, onShow, setDeletedCommentId}) {
+	function trashbuttonHandling() {
+		setDeletedCommentId(id);
+		onShow();
+	}
+
 	return (
 		<div>
 			<Card>
@@ -11,6 +17,11 @@ function Comment({text}) {
 						{text}
 					</Card.Text>
 				</Card.Body>
+				<Card.Footer className="text-muted">
+					<Button variant="danger" onClick={trashbuttonHandling}>
+						<Trash />
+					</Button>
+				</Card.Footer>
 			</Card>
 		</div>
 	)
