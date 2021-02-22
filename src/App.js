@@ -1,4 +1,3 @@
-//Adding socket
 import React, { useState, useEffect } from 'react'
 import CommentForm from './CommentForm';
 import CommentList from './CommentList';
@@ -25,7 +24,7 @@ function App() {
       <Container fluid>
         <Row>
           <Col xs={3} style={{padding: "0"}}>
-            <CommentForm comments={comments} setRefetched={setRefetched}/>
+            <CommentForm comments={comments} setComments={setComments}/>
           </Col>
           <Col>
             <CommentList comments={comments} style={{padding: "0"}} setRefetched={setRefetched}/>
