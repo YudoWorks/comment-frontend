@@ -8,9 +8,6 @@ function DeleteCommentModal({id, show, handleClose, socket, setComments}) {
 		socket.on('display-latest-comment', data => {
 			setComments(data);
 		})
-		return () => {
-			socket.disconnect();
-		}
 	}, [])
 
   function deleteHandling() {

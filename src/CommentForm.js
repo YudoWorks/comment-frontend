@@ -11,9 +11,6 @@ function CommentForm({comments, setComments, socket}) {
 		socket.on('display-latest-comment', data => {
 			setComments(data);
 		})
-		return () => {
-			socket.disconnect();
-		}
 	}, [])
 
 	function handleSubmit(e) {
