@@ -2,12 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios'
-import socketIOClient from 'socket.io-client'
 
-const socket = socketIOClient('http://localhost:3001');
-
-function CommentForm({comments, setComments}) {
+function CommentForm({comments, setComments, socket}) {
 	const [text, setText] = useState('');
 
 	useEffect(() => {
