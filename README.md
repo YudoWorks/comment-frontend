@@ -1,5 +1,6 @@
 # My Comment App
 This is the front-end / client file of MyCommentApp
+
 Back-end / server file : https://github.com/yudoBinus/comment-backend
 
 ## Feature
@@ -14,9 +15,11 @@ The user can send their comment in this application and the other user that open
 - Basic socket.io
 
 ## How to start application
-open your ssh(powershell / cmd / other..) in this directory and type 
+open your ssh (powershell / cmd / other..) in this directory and type 
 create 1 directory to keep this 2 file (front-end and back-end)
+
 front-end: https://github.com/yudoBinus/comment-frontend
+
 back-end: https://github.com/yudoBinus/comment-backend
 
 get the front-end file:
