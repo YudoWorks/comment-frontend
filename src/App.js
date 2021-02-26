@@ -5,6 +5,9 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import axios from 'axios'
+import socketIOClient from 'socket.io-client'
+
+const socket = socketIOClient('http://localhost:3001');
 
 function App() {
   const [comments, setComments] = useState(() => []);
@@ -24,10 +27,19 @@ function App() {
       <Container fluid>
         <Row>
           <Col xs={3} style={{padding: "0"}}>
-            <CommentForm comments={comments} setRefetched={setRefetched}/>
+            <CommentForm 
+              comments={comments} 
+              setComments={setComments} 
+              socket={socket}
+            />
           </Col>
           <Col>
-            <CommentList comments={comments} style={{padding: "0"}} setRefetched={setRefetched}/>
+            <CommentList
+              style={{padding: "0"}} 
+              comments={comments} 
+              socket={socket} 
+              setComments={setComments}
+            />
           </Col>
         </Row>
       </Container>

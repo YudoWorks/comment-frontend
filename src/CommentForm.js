@@ -1,15 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios'
+import PropTypes from 'prop-types'
 
-function CommentForm({comments, setRefetched}) {
+function CommentForm({comments, setComments, socket}) {
 	const [text, setText] = useState('');
+
+	useEffect(() => {
+		socket.on('display-latest-comment', data => {
+			setComments(data);
+		})
+		return () => {
+			socket.disconnect();
+		}
+	}, [])
 
 	function handleSubmit(e) {
 		e.preventDefault();
-
+		
 		const newComment = {
 			text,
 			id: comments.length + 1
@@ -17,13 +26,7 @@ function CommentForm({comments, setRefetched}) {
 
 		setText('');
 
-		axios.post('http://localhost:3001/comments', newComment)
-		.then(function (response) {
-			setRefetched(true);
-		})
-		.catch(function (error) {
-			console.log(error);
-		});
+		socket.emit('create-new-comment', newComment);
 	}
 
 	return (
@@ -40,6 +43,12 @@ function CommentForm({comments, setRefetched}) {
 			</Form>
 		</div>
 	)
+}
+
+CommentForm.propTypes = {
+	comments: PropTypes.array,
+	setComments: PropTypes.func,
+	socket: PropTypes.object
 }
 
 export default CommentForm;

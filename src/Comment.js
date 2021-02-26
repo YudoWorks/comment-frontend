@@ -2,6 +2,7 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 import { Trash } from 'react-bootstrap-icons';
 import Button from 'react-bootstrap/Button'
+import PropTypes from 'prop-types'
 
 function Comment({id, text, onShow, setDeletedCommentId}) {
 	function trashbuttonHandling() {
@@ -25,6 +26,13 @@ function Comment({id, text, onShow, setDeletedCommentId}) {
 			</Card>
 		</div>
 	)
+}
+
+Comment.propTypes = {
+	id: PropTypes.string,
+	text: PropTypes.string,
+	onShow: PropTypes.func,
+	setDeletedCommentId: PropTypes.func
 }
 
 export default Comment
