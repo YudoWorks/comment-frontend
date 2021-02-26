@@ -30,7 +30,12 @@ function App() {
             <CommentForm comments={comments} setComments={setComments} socket={socket}/>
           </Col>
           <Col>
-            <CommentList comments={comments} style={{padding: "0"}} setRefetched={setRefetched}/>
+            <CommentList
+              style={{padding: "0"}} 
+              comments={comments} 
+              socket={socket} 
+              setComments={setComments}
+            />
           </Col>
         </Row>
       </Container>

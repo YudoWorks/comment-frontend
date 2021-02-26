@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-import axios from 'axios'
 
-function DeleteCommentModal({id, show, handleClose, setRefetched}) {
-  function deleteHandling() {
-    axios.delete(`http://localhost:3001/comments/${id}`)
-		.then(() => {
-      handleClose();
-      setRefetched(true);
+function DeleteCommentModal({id, show, handleClose, socket, setComments}) {
+	useEffect(() => {
+		socket.on('display-latest-comment', data => {
+			setComments(data);
 		})
+		return () => {
+			socket.disconnect();
+		}
+	}, [])
+
+  function deleteHandling() {
+    socket.emit('delete-comment', id);
+    handleClose();
   }
 
   return (

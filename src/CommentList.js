@@ -3,7 +3,7 @@ import Comment from './Comment'
 import CardColumns from 'react-bootstrap/CardColumns'
 import DeleteCommentModal from './DeleteCommentModal'
 
-function CommentList({comments, setRefetched}) {
+function CommentList({comments, socket, setComments}) {
 	const [deletedCommentId, setDeletedCommentId] = useState(null)
 	const [show, setShow] = useState(false);
 
@@ -20,7 +20,13 @@ function CommentList({comments, setRefetched}) {
 					)
 				}
 			</CardColumns>
-			<DeleteCommentModal show={show} handleClose={handleClose} id={deletedCommentId} setRefetched={setRefetched}/>
+			<DeleteCommentModal 
+				show={show} 
+				handleClose={handleClose} 
+				id={deletedCommentId} 
+				socket={socket} 
+				setComments={setComments}
+			/>
 		</div>
 	)
 }
