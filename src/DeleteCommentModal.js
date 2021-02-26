@@ -38,4 +38,12 @@ function DeleteCommentModal({id, show, handleClose, socket, setComments}) {
   )
 }
 
+DeleteCommentModal.propTypes = {
+  id: PropTypes.string,
+  show: PropTypes.bool,
+  handleClose: PropTypes.func,
+  socket: PropTypes.object,
+  setComments: PropTypes.func
+}
+
 export default DeleteCommentModal

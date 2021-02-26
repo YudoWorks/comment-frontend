@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Comment from './Comment'
 import CardColumns from 'react-bootstrap/CardColumns'
 import DeleteCommentModal from './DeleteCommentModal'
+import PropTypes from 'prop-types'
 
 function CommentList({comments, socket, setComments}) {
 	const [deletedCommentId, setDeletedCommentId] = useState(null)
@@ -16,7 +17,13 @@ function CommentList({comments, socket, setComments}) {
 			<CardColumns>
 				{
 					comments.map( comment => 
-						<Comment key={comment._id} text={comment.text} onShow={handleShow} setDeletedCommentId={setDeletedCommentId} id={comment._id}/>
+						<Comment 
+							key={comment._id} 
+							text={comment.text} 
+							onShow={handleShow} 
+							setDeletedCommentId={setDeletedCommentId} 
+							id={comment._id}
+						/>
 					)
 				}
 			</CardColumns>
@@ -29,6 +36,12 @@ function CommentList({comments, socket, setComments}) {
 			/>
 		</div>
 	)
+}
+
+CommentList.propTypes = {
+	comments: PropTypes.array,
+	socket: PropTypes.object,
+	setComments: PropTypes.func
 }
 
 export default CommentList

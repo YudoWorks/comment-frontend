@@ -27,7 +27,11 @@ function App() {
       <Container fluid>
         <Row>
           <Col xs={3} style={{padding: "0"}}>
-            <CommentForm comments={comments} setComments={setComments} socket={socket}/>
+            <CommentForm 
+              comments={comments} 
+              setComments={setComments} 
+              socket={socket}
+            />
           </Col>
           <Col>
             <CommentList

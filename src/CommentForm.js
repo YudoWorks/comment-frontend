@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import PropTypes from 'prop-types'
 
 function CommentForm({comments, setComments, socket}) {
 	const [text, setText] = useState('');
@@ -42,6 +43,12 @@ function CommentForm({comments, setComments, socket}) {
 			</Form>
 		</div>
 	)
+}
+
+CommentForm.propTypes = {
+	comments: PropTypes.array,
+	setComments: PropTypes.func,
+	socket: PropTypes.object
 }
 
 export default CommentForm;
