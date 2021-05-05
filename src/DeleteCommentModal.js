@@ -23,7 +23,7 @@ function DeleteCommentModal({id, show, handleClose, socket, setComments}) {
         </Modal.Header>
 
         <Modal.Body>
-          <p>Are you sure delete your comment ? </p>
+          <p>Are you sure you want to delete the comment ?</p>
         </Modal.Body>
 
         <Modal.Footer>
